@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# 내 백엔드 주소를 넣은 파일
+.env

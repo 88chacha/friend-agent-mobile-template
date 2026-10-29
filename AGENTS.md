@@ -1,3 +1,32 @@
+# 작업 규칙
+
+이 저장소는 AI 친구 에이전트 서비스(하루친구)의 휴대폰 앱 실습용 템플릿이다. 백엔드는 별도 저장소 [friend-agent-template](https://github.com/88chacha/friend-agent-template)이고, 이 앱은 그 백엔드의 API를 부르는 화면만 가진다. 코딩 에이전트와 사람이 모두 이 규칙을 따른다.
+
+## 구조
+- 화면은 `src/app/` 에 있다(Expo Router). 파일 하나가 화면 하나다. `_layout.tsx` 는 화면 틀이다.
+- 백엔드와 주고받는 코드는 `src/lib/api.ts`, 로그인은 `src/lib/session.tsx` 와 `src/lib/supabase.ts` 에 모아 둔다. 화면 파일에서 `fetch` 를 직접 부르지 않는다.
+- 백엔드 주소는 `EXPO_PUBLIC_API_URL` 하나만 쓴다. Supabase 주소와 publishable key 는 백엔드 `/api/config` 에서 받아 온다. 앱에 Supabase 값을 따로 넣지 않는다.
+- 답 스트리밍(`/api/chat`)은 `expo/fetch` 로 읽는다. React Native 기본 `fetch` 로 바꾸지 않는다.
+
+## 비밀값과 키
+- 앱에는 비밀값을 넣지 않는다. `EXPO_PUBLIC_` 로 시작하는 값은 앱 파일 안에 그대로 들어가 누구나 볼 수 있다. Supabase secret key, LLM API 키는 절대 넣지 않는다.
+- `.env` 는 커밋하지 않는다.
+- 서명 키(`*.jks`, `*.p12`, `*.p8`, `*.mobileprovision`)와 Google 서비스 계정 키(JSON) 파일을 만들거나 저장소에 넣지 않는다. 서명은 EAS가 관리한다. Google Play에 올릴 때는 Play Console 웹에서 직접 올린다.
+
+## 빌드와 배포
+- `eas build`, `eas submit` 은 실행 전에 어떤 프로필로 무엇을 만들고 어디에 올리는지 한 줄씩 설명하고 확인을 받는다. 무료 플랜은 월 빌드 횟수가 정해져 있다.
+- `app.json` 의 `android.package`, `ios.bundleIdentifier` 는 스토어에 한 번 올리면 바꿀 수 없다. 바꾸기 전에 확인을 받는다.
+
+## 작업 방식
+- 명령을 실행하기 전에 그 명령이 무엇을 만들고 바꾸고 지우는지 한 줄씩 설명한다.
+- 요청받은 화면과 기능 외에는 바꾸지 않는다. 백엔드 API가 더 필요하면 앱에서 우회하지 말고, 백엔드 저장소에 무엇이 필요한지 먼저 설명한다.
+- 오류가 나면 로그를 근거로 원인을 먼저 설명하고, 확인을 받은 뒤 고친다.
+- 작업을 마치기 전에 `npx tsc --noEmit` 과 `npx expo-doctor` 를 돌린다.
+
+---
+
+# Expo 작업 안내 (Expo 템플릿 기본 문서)
+
 This is an Expo/React Native mobile application. Prioritize mobile-first patterns, performance, and cross-platform compatibility.
 
 ## Expo has changed — do not trust your training data
