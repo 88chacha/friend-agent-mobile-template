@@ -1,5 +1,7 @@
 # 하루친구 휴대폰 앱 (Expo)
 
+> **이 브랜치(`sdk-54`)는 iPhone용 예비 버전입니다.** App Store의 Expo Go가 Expo SDK 54까지만 지원해서, 개발자 계정 없이 iPhone에서 열 수 있게 SDK만 54로 낮췄습니다. 화면과 코드는 `main`(SDK 58)과 같습니다. Android의 Play 스토어 Expo Go는 최신 SDK라 Android 폰은 `main` 브랜치를 씁니다. App Store의 Expo Go가 SDK 55 이상으로 바뀌면 이 브랜치는 iPhone에서도 열리지 않습니다. 쓰기 전에 iPhone Expo Go의 SDK 버전이 54인지 확인합니다.
+
 AI 친구 에이전트 서비스 **하루친구**의 휴대폰 앱 실습용 템플릿입니다. 백엔드는 별도 저장소 [friend-agent-template](https://github.com/88chacha/friend-agent-template)에 있고, 이 앱은 그 백엔드의 API를 부르는 화면만 가집니다. 웹 화면과 같은 백엔드, 같은 사용자 데이터를 씁니다.
 
 ## 들어 있는 것
@@ -16,9 +18,8 @@ AI 친구 에이전트 서비스 **하루친구**의 휴대폰 앱 실습용 템
 
 ## 준비
 
-- Node.js 22.13 이상 또는 24.3 이상 (내 컴퓨터에는 이것만 있으면 됩니다. Android Studio, Xcode, 에뮬레이터는 필요 없습니다)
-- Android 폰에 **Expo Go** 앱 (Play 스토어). 이 템플릿은 Expo SDK 58이라 Expo Go의 SDK 버전도 58이어야 합니다
-- iPhone: App Store의 Expo Go는 최신 SDK를 지원하지 않습니다. 최신 SDK의 Expo Go는 Apple 개발자 계정으로 직접 빌드(`npx eas-cli@latest go`)해 TestFlight로 받아야 합니다. 계정이 없으면 Android 폰으로 확인합니다
+- Node.js 20.19.4 이상 (내 컴퓨터에는 이것만 있으면 됩니다. Android Studio, Xcode, 에뮬레이터는 필요 없습니다)
+- iPhone에 **Expo Go** 앱 (App Store). 앱의 설정 화면에서 지원 SDK가 54인지 확인합니다
 - 배포한 백엔드 주소. 없으면 강사가 알려 준 시연용 주소
 - 빌드할 때: Expo 계정(무료)
 
@@ -27,7 +28,7 @@ AI 친구 에이전트 서비스 **하루친구**의 휴대폰 앱 실습용 템
 ```bash
 npm install
 cp .env.example .env          # .env 의 EXPO_PUBLIC_API_URL 에 백엔드 주소를 넣는다
-npx expo start                # 화면의 QR 코드를 Android 폰의 Expo Go 앱으로 찍는다
+npx expo start                # 화면의 QR 코드를 iPhone 카메라 앱으로 찍으면 Expo Go로 열린다
 ```
 
 노트북과 폰이 같은 와이파이에 있어야 합니다. 연결이 안 되면(강의실 와이파이 등) `npx expo start --tunnel` 로 실행합니다.
