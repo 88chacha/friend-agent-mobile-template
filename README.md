@@ -17,8 +17,7 @@ AI 친구 에이전트 서비스 **하루친구**의 휴대폰 앱 실습용 템
 ## 준비
 
 - Node.js 22.13 이상 또는 24.3 이상 (내 컴퓨터에는 이것만 있으면 됩니다. Android Studio, Xcode, 에뮬레이터는 필요 없습니다)
-- Android 폰에 **Expo Go** 앱 (Play 스토어). 이 템플릿은 Expo SDK 58이라 Expo Go의 SDK 버전도 58이어야 합니다
-- iPhone: App Store의 Expo Go는 최신 SDK를 지원하지 않습니다. 최신 SDK의 Expo Go는 Apple 개발자 계정으로 직접 빌드(`npx eas-cli@latest go`)해 TestFlight로 받아야 합니다. 계정이 없으면 Android 폰으로 확인합니다
+- 휴대폰에 **Expo Go** 앱 (Android: Play 스토어, iPhone: App Store). 이 템플릿은 Expo SDK 58이라 Expo Go 설정 화면의 SDK 버전도 58이어야 합니다. 다르면 "버전이 맞지 않는다"는 오류가 뜹니다
 - 배포한 백엔드 주소. 없으면 강사가 알려 준 시연용 주소
 - 빌드할 때: Expo 계정(무료)
 
@@ -27,7 +26,7 @@ AI 친구 에이전트 서비스 **하루친구**의 휴대폰 앱 실습용 템
 ```bash
 npm install
 cp .env.example .env          # .env 의 EXPO_PUBLIC_API_URL 에 백엔드 주소를 넣는다
-npx expo start                # 화면의 QR 코드를 Android 폰의 Expo Go 앱으로 찍는다
+npx expo start                # 화면의 QR 코드를 폰으로 찍는다 (Android: Expo Go 앱, iPhone: 카메라 앱)
 ```
 
 노트북과 폰이 같은 와이파이에 있어야 합니다. 연결이 안 되면(강의실 와이파이 등) `npx expo start --tunnel` 로 실행합니다.
